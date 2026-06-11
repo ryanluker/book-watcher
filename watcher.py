@@ -1,11 +1,30 @@
 import subprocess as s
 from playwright.sync_api import sync_playwright
 
+# Setup config by reading the local ini
+import configparser
+config = configparser.ConfigParser()
+config.read("config.ini")
+
 
 def check_orl_waitlist(page):
     orl_holds_url = "https://orl.bibliocommons.com/v2/holds"
+    orl_username = config["orl"]["username"]
+    orl_pass = config["orl"]["password"]
     page.goto(orl_holds_url)
-    breakpoint()
+    
+    # Login if we are redirect'd there
+    page.get_by_role("textbox", name="Username or Barcode :").fill(orl_username)
+    page.get_by_role("textbox", name="PIN :").fill(orl_pass)
+    page.get_by_role("button", name="Log In", description="Log In", exact=True).click()
+
+    # Wait for the holds to load
+    page.locator(".cp-holds-list").wait_for(state="visible")
+
+    # Look at the waitlist positions and see if any are in position 1
+    queue_info = page.locator(".cp-hold-position").all()
+    for info in queue_info:
+        print(info.text_content())
 
 
 def check_kobo_wishlist(page):
@@ -28,7 +47,7 @@ def main():
         # Setup playwright firefox
         firefox = playwright.firefox
         # Use headed mode and slow mode for human readability
-        browser = firefox.launch(headless=False, slow_mo=100)
+        browser = firefox.launch()
         page = browser.new_page()
 
         # Perform the checks on ORL and Kobo
