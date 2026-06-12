@@ -22,9 +22,13 @@ def check_orl_waitlist(page):
     page.locator(".cp-holds-list").wait_for(state="visible")
 
     # Look at the waitlist positions and see if any are in position 1
-    queue_info = page.locator(".cp-hold-position").all()
-    for info in queue_info:
-        print(info.text_content())
+    queue = page.locator(".cp-holds-list")
+    hold_list = queue.locator(".cp-hold-item").all()
+    for hold_card in hold_list:
+        hold_position = hold_card.locator(".cp-hold-position")
+        hold_title = hold_card.locator(".title-content")
+        print(hold_title.text_content())
+        print(hold_position.text_content())
 
 
 def check_kobo_wishlist(page):
