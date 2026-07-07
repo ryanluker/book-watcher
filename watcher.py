@@ -27,8 +27,11 @@ def check_orl_waitlist(page):
     for hold_card in hold_list:
         hold_position = hold_card.locator(".cp-hold-position")
         hold_title = hold_card.locator(".title-content")
+        hold_status = hold_card.locator(".status-name")
         print(hold_title.text_content())
+        print(hold_status.text_content())
         print(hold_position.text_content())
+        print("")
 
 
 def check_kobo_wishlist(page):
