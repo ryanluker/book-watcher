@@ -9,5 +9,13 @@
 - Library book holds where I am notified when I get to the #1 position
 - This allows me to choose to "pause" the hold if I already have a book on the go
 
+### Config
+Set the following config values (create a local `config.ini`)
+```ini
+[orl]
+username=***
+password=***
+```
+
 ### Running
 `uv run watcher.py`
