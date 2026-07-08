@@ -1,3 +1,12 @@
+"""
+Book Watcher
+
+A reuseable script to find out the position in a wait queue for your books.
+Leverages playwright for automation of the browser and navigation within the ORL web app.
+
+On run complexion, notifies the host OS by using `notify-send` in a subprocess call.
+"""
+
 import subprocess as s
 from playwright.sync_api import sync_playwright
 
