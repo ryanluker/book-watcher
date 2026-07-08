@@ -10,4 +10,4 @@
 - This allows me to choose to "pause" the hold if I already have a book on the go
 
 ### Running
-`uv run main.py`
+`uv run watcher.py`
