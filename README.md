@@ -19,3 +19,32 @@ password=***
 
 ### Running
 `uv run watcher.py`
+
+```
+The Long Way to A Small, Angry Planet
+In transit
+#1 on 3 copies
+
+Artificial Condition
+Not ready
+#2 on 6 copies
+
+The Moon Is A Harsh Mistress
+Not ready
+#2 on 1 copies
+
+Incorruptible : Why Good Companies Go Bad And How Great Companies Stay Great
+Not ready
+#5 on 2 copies
+
+The Well of Ascension
+Not ready
+#6 on 4 copies
+
+A Psalm for the Wild-built
+Not ready
+#9 on 7 copies
+
+The Tainted Cup
+Paused
+```
